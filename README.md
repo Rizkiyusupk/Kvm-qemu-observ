@@ -23,8 +23,6 @@ terraform-setup/
 ├── compute.tf
 ├── main.tf
 ├── prep-vm.tf
-├── terraform.tfstate
-└── terraform.tfstate.backup
 ```
 
 dan yang kedua yaitu ansible
