@@ -32,9 +32,9 @@ resource "libvirt_volume" "vm-master" {
     }
   }
 
-  
+
   capacity = 10737418240
-  
+
   backing_store = {
     path   = libvirt_volume.ubuntu_base.path
     format = {
@@ -55,7 +55,7 @@ resource "libvirt_cloudinit_disk" "vm-master" {
       shell: /bin/bash
   chpasswd:
     list: |
-      ubuntu:iki123
+      ubuntu:$your-password
     expire: false
   ssh_pwauth: true
   packages:
@@ -63,7 +63,7 @@ resource "libvirt_cloudinit_disk" "vm-master" {
   timezone: UTC
   EOF
 
- meta_data = <<-EOF
+  meta_data = <<-EOF
     instance-id: vm-master
     local-hostname: master
   EOF
@@ -98,8 +98,8 @@ resource "libvirt_volume" "vm-worker1" {
     }
   }
 
-  
-  capacity = 10737418240 
+
+  capacity = 10737418240
 
   backing_store = {
     path   = libvirt_volume.ubuntu_base.path
@@ -123,13 +123,13 @@ resource "libvirt_cloudinit_disk" "vm-worker1" {
       shell: /bin/bash
   chpasswd:
     list: |
-      ubuntu:iki123
+      ubuntu:$your-password
     expire: false
   ssh_pwauth: true
   packages:
     - openssh-server
   timezone: UTC
- EOF
+  EOF
 
   meta_data = <<-EOF
     instance-id: vm-worker1
@@ -150,7 +150,7 @@ resource "libvirt_cloudinit_disk" "vm-worker1" {
 resource "libvirt_volume" "vm-worker1-cloudinit" {
   name = "vm-worker1-cloudinit.iso"
   pool = libvirt_pool.k8s_pool.name
-  
+
 
   create = {
     content = {
@@ -170,7 +170,7 @@ resource "libvirt_volume" "vm-worker2" {
 
 
   capacity = 10737418240
-  
+
   backing_store = {
     path   = libvirt_volume.ubuntu_base.path
     format = {
@@ -191,13 +191,13 @@ resource "libvirt_cloudinit_disk" "vm-worker2" {
       shell: /bin/bash
   chpasswd:
     list: |
-      ubuntu:iki123
+      ubuntu:$your-password
     expire: false
   ssh_pwauth: true
   packages:
     - openssh-server
   timezone: UTC
- EOF
+  EOF
 
   meta_data = <<-EOF
     instance-id: vm-worker2
