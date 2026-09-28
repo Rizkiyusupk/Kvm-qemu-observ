@@ -1,5 +1,5 @@
 - name: install observ tech stack
-  hosts: masters-cluster-2
+  hosts: masters
   become: true
 
   tasks:
