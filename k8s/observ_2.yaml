@@ -1,5 +1,5 @@
 - name: install loki stack
-  hosts: masters-cluster-2
+  hosts: masters
   become: true
   tasks:
     - name: add repo grafana
