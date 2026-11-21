@@ -91,3 +91,11 @@ disesuaikan hanya yang bergantung pada codename rilis:
 - HashiCorp: ubah `hashicorp_suite` bila suite rilis belum ada di repo mereka.
 - Docker: pastikan `download.docker.com` sudah punya suite untuk rilis tersebut.
 - Terraform: ganti URL image di `prep-vm.tf`.
+
+
+### prerequisites 
+Oke sebelum masuk ke setup saya harapkan anda semua membaca ini,semua kondisi harus memenuhi 
+
+ - **kubernetes.core**
+ - **community.general**
+ - **ansible.posix**
