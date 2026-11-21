@@ -98,4 +98,7 @@ Oke sebelum masuk ke setup saya harapkan anda semua membaca ini,semua kondisi ha
 
  - **kubernetes.core**
  - **community.general**
- - **ansible.posix**
+ - **ansible.posix
+
+ collection yang dibutuhkan tapi jika install ansible lewat pip ansible berarti semuanya 
+
