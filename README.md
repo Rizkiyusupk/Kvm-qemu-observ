@@ -72,14 +72,14 @@ cluster-side/
 - **KVM** : 8.2.2
 - **QEMU** : 8.2.2
 - **Libvirt** : 10.0.0
-- **Alertmanager** : v0.33.1
-- **Loki** : 3.6.7
-- **Loki Canary** : 3.6.7
+- **Alertmanager** : v0.93.1
+- **Loki** : 3.6.11
+- **Loki Canary** : 3.6.12
 - **Loki Gateway (nginx)** : 1.29-alpine
 - **Grafana** : 13.1.0
-- **Prometheus Operator** : v0.92.1
-- **Prometheus Config Reloader** : v0.92.1
-- **Kube State Metrics** : v2.19.1
-- **Prometheus** : v3.13.1
+- **Prometheus Operator** : v0.93.1
+- **Prometheus Config Reloader** : v0.93.1
+- **Kube State Metrics** : v2.20.0
+- **Prometheus** : v3.14.1
 - **Node Exporter** : v1.12.0
 - **Promtail** : 3.5.1
