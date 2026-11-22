@@ -12,7 +12,7 @@ itu masih sama saja dengan projek sebelumnya,oke langsung saja masuk ke pembahas
 | **Worker 2**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( DHCP Ip )            |
 | **Jenkins** | 7 cores | 7GB  | 240GB   |                Wlan                 |
 
-![scdbijcf](/asset/observ.png)
+![scdbijcf](/asset/obersv.png)
 
 
 ### Structure Folder 
