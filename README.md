@@ -1,16 +1,18 @@
-Masuk ke tahap lanjutan dari projek sebelumnya jika di projek sebelumnya itu belum menambahkan observ tools untuk monitoring dari infrastructure yang sudah di bangun sekarang saya akan membahas
+### Overview
+
+Masuk kee tahap lanjutan dari projek sebelumnya jika di projek sebelumnya itu belum menambahkan observ tools untuk monitoring dari infrastructure yang sudah di bangun sekarang saya akan membahas
 cara untuk menambahkan stack observ tools seperti prometheus,loki,grafana,dan alertmanager.Karena kali ini hanya menambahkan dan mengintegrasikan observ tools jadinya untuk infrastructure 
 itu masih sama saja dengan projek sebelumnya,oke langsung saja masuk ke pembahasaanya 
 
 
 | Node        | CPU     | RAM  | Storage | Network                             |
 |-------------|---------|------|---------|------------------------------------ |
-| **Master**  | 2 cores | 2GB  | 10GB    | 1 Adapters   ( Static Ip )          |
-| **Worker 1**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( Static Ip )          |
-| **Worker 2**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( Static Ip )          |
+| **Master**  | 2 cores | 2GB  | 10GB    | 1 Adapters   ( DHCP Ip )            |
+| **Worker 1**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( DHCP Ip )            |
+| **Worker 2**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( DHCP Ip )            |
 | **Jenkins** | 7 cores | 7GB  | 240GB   |                Wlan                 |
 
-![scdbijcf](/asset/obersv.png)
+![scdbijcf](/asset/observ.png)
 
 
 ### Structure Folder 
@@ -31,19 +33,19 @@ dan yang kedua yaitu ansible
 k8s/
 ├── ansible.cfg
 ├── inventory
-├── playbook-allow-port.yaml
-├── playbook-ip.yaml
-├── playbook-install-java-baremetal.yaml
-├── playbook-install-jenkins-baremetal.yaml
-├── playbook-install-kubectl-baremetal.yaml
-├── playbook-join.yaml
-├── playbook-kubernetes.yaml
-├── playbook-pkg.yaml
-├── playbook-swap.yaml
-├── playbook-config.yaml
-├── playbook-install-terraform-bare-metal.yaml
-├── observ.yaml
-├── observ_2.yaml
+├── playbook-allow-port-native.yaml
+├── playbook-ip-native.yaml
+├── playbook-install-java-baremetal-native.yaml
+├── playbook-install-jenkins-baremetal-native.yaml
+├── playbook-install-kubectl-baremetal-native.yaml
+├── playbook-join-native.yaml
+├── playbook-kubernetes-native.yaml
+├── playbook-pkg-native.yaml
+├── playbook-swap-native.yaml
+├── playbook-config-native.yaml
+├── playbook-install-terraform-baremetal-native.yaml
+├── observ-native.yaml
+├── observ_2-native.yaml
 ```
 
 yang terakhir di cluster
@@ -72,19 +74,19 @@ cluster-side/
 - **KVM** : 8.2.2
 - **QEMU** : 8.2.2
 - **Libvirt** : 10.0.0
-- **Alertmanager** : v0.93.1
-- **Loki** : 3.6.11
-- **Loki Canary** : 3.6.12
+- **Alertmanager** : v0.34.0
+- **Loki** : 3.6.7
+- **Loki Canary** : 3.6.7
 - **Loki Gateway (nginx)** : 1.29-alpine
 - **Grafana** : 13.1.0
-- **Prometheus Operator** : v0.93.1
-- **Prometheus Config Reloader** : v0.93.1
-- **Kube State Metrics** : v2.20.0
-- **Prometheus** : v3.14.1
+- **Prometheus Operator** : v0.92.1
+- **Prometheus Config Reloader** : v0.92.1
+- **Kube State Metrics** : v2.19.1
+- **Prometheus** : v3.13.1
 - **Node Exporter** : v1.12.0
 - **Promtail** : 3.5.1
 
-- ### Catatan Kompatibilitas
+### Catatan Kompatibilitas
 Dites pada: VM Ubuntu 22.04 (jammy, dari image cloud) dan node Jenkins Ubuntu 25.04.
 Kalau memakai rilis Ubuntu lain, alur playbook dan module-nya sama. Yang perlu
 disesuaikan hanya yang bergantung pada codename rilis:
@@ -92,13 +94,10 @@ disesuaikan hanya yang bergantung pada codename rilis:
 - Docker: pastikan `download.docker.com` sudah punya suite untuk rilis tersebut.
 - Terraform: ganti URL image di `prep-vm.tf`.
 
-
 ### prerequisites 
 Oke sebelum masuk ke setup saya harapkan anda semua membaca ini,semua kondisi harus memenuhi 
 
- - **kubernetes.core**
- - **community.general**
- - **ansible.posix
+ - **K8s sudah terinstall di node**
+ - **Java,Jenkins,Terraform,Kubectl harus terinstall di laptop 2**
 
- collection yang dibutuhkan tapi jika install ansible lewat pip ansible berarti semuanya 
-
+semua hal yang ada diatas adalah syarta wajib untuk melanjutkan ke setup,baca disini jika belum memenuhi syarat [ini](https://github.com/Rizkiyusupk/Rizkiyusupk.github.io/blob/master/_posts/2026-06-22-kvm.md)
